@@ -5,18 +5,25 @@ import styles from './styles.css'
 
 export default class ExampleComponent extends Component {
   static propTypes = {
-    text: PropTypes.string
+    question: PropTypes.string,
+    answers: PropTypes.array,
+    onVote: PropTypes.func
   }
 
   render() {
-    const {
-      text
-    } = this.props
+    const { question, answers } = this.props
 
     return (
-      <div className={styles.test}>
-        Example Component: {text}
-      </div>
+      <article className={styles.poll}>
+        <h3 className={styles.question}>{question}</h3>
+        <ul className={styles.answers}>
+          {answers.map(answer => (
+            <li key={answer}>
+              <button>{answer}</button>
+            </li>
+          ))}
+        </ul>
+      </article>
     )
   }
 }

@@ -6,7 +6,7 @@ export default class App extends Component {
   render () {
     return (
       <div>
-        <ExampleComponent text='Modern React component module' />
+        <ExampleComponent question="What's your favourite JS framework?" answers={['React', 'Vue', 'Angular']} />
       </div>
     )
   }
