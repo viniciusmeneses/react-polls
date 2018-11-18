@@ -4,7 +4,10 @@
   "description": "Poll component for react.",
   "author": "viniciusmeneses",
   "license": "MIT",
-  "repository": "viniciusmeneses/react-polls",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viniciusmeneses/react-polls.git"
+  },
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -57,5 +60,14 @@
   },
   "files": [
     "dist"
+  ],
+  "bugs": {
+    "url": "https://github.com/viniciusmeneses/react-polls/issues"
+  },
+  "homepage": "https://github.com/viniciusmeneses/react-polls#readme",
+  "keywords": [
+    "react",
+    "poll",
+    "component"
   ]
 }
