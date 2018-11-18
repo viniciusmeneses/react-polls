@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import styles from './styles.css'
 
-export default class ExampleComponent extends Component {
+export default class Poll extends Component {
   static propTypes = {
     question: PropTypes.string,
     answers: PropTypes.array,

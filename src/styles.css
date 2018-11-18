@@ -1,12 +1,64 @@
 /* add css styles here (optional) */
 
 .poll {
-  display: inline-block;
-  margin: 2em auto;
-  border: 2px solid #000;
-  font-size: 2em;
+  /* border: 1px solid #7c47b9; */
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: inherit;
+  padding: 10px;
 }
 
-.question {
+.poll * {
+  box-sizing: border-box;
+}
 
+.poll .question {
+  color: rgb(58, 58, 58);
+  text-align: center;
+  font-weight: normal;
+  margin: 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+}
+
+.poll .answers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+.poll .answers li {
+  width: 100%;
+  margin: 5px 0;
+}
+
+.poll .answers button {
+	background: #ffffff;
+  color: #6d4b94;
+  font-weight: bold;
+  border: 2px solid #7c6497;
+  border-radius: 25px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  padding: 10px;
+  transition: all 0.3s ease;
+  outline: 0;
+  font-family: inherit;
+}
+
+.poll .answers button:hover {
+	background: #6d4b94;
+  color: #fff;
 }
