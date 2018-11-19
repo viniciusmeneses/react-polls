@@ -5,7 +5,12 @@ import animate from 'animate.css'
 import styles from './styles.css'
 
 const themes = {
-  default: ['#6d4b94', '#7c6497', '#6d4b943b']
+  purple: ['#6D4B94', '#7C6497', '#6D4B943B'],
+  red: ['#E23D3D', '#EF4545', '#FF28283B'],
+  blue: ['#5674E0', '#5674E0', '#5674E03B'],
+  black: ['#474747', '#474747', '#4747473B'],
+  white: ['#ffffff', '#ffffff', '#ffffff3B'],
+  cyan: ['#00BCDD', '#00BCDD', '#00BCDD3B']
 }
 
 export default class Poll extends Component {
@@ -106,7 +111,7 @@ export default class Poll extends Component {
   obtainColors = customTheme => {
     const colors = themes[customTheme]
     if (!colors) {
-      return themes['default']
+      return themes['purple']
     }
     return colors
   }
@@ -115,10 +120,11 @@ export default class Poll extends Component {
     const { question, answers, customStyles } = this.props
     const { poll, totalVotes } = this.state
     const colors = this.obtainColors(customStyles.theme)
+    console.log(colors)
 
     return (
       <article className={`${animate.animated} ${animate.fadeIn} ${animate.faster} ${styles.poll}`} style={{ textAlign: customStyles.align, alignItems: this.alignPoll(customStyles.align) }}>
-        <h3 className={styles.question} style={{ borderWidth: customStyles.questionSeparator ? '1px' : '0', alignSelf: customStyles.questionSeparatorWidth === 'title' ? 'center' : 'stretch', fontWeight: customStyles.questionBold ? 'bold' : 'normal', color: customStyles.questionColor, borderBottomColor: colors[2] }}>{question}</h3>
+        <h3 className={styles.question} style={{ borderWidth: customStyles.questionSeparator ? '1px' : '0', alignSelf: customStyles.questionSeparatorWidth === 'title' ? 'center' : 'stretch', fontWeight: customStyles.questionBold ? 'bold' : 'normal', color: customStyles.questionColor }}>{question}</h3>
         <ul className={styles.answers}>
           {answers.map(answer => (
             <li key={answer.option}>

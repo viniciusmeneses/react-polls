@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 
 import Poll from 'react-polls'
 
-const pollQuestion = 'What\'s your favourite JS framework?';
+const pollQuestion = 'What framework do you prefer?';
 
 const pollAnswers = [
-  { option: 'React', votes: 62 },
-  { option: 'Vue', votes: 20 },
-  { option: 'Angular', votes: 15 },
+  { option: 'React', votes: 5 },
+  { option: 'Vue', votes: 2 },
+  { option: 'Angular', votes: 1 },
 ];
 
 const pollStyles = {
@@ -16,7 +16,7 @@ const pollStyles = {
   questionBold: false,
   questionColor: '#3a3a3a',
   align: 'center',
-  theme: 'default'
+  theme: 'black'
 }
 
 export default class App extends Component {
@@ -50,7 +50,7 @@ export default class App extends Component {
 
     return (
       <div>
-        <Poll question={pollQuestion} answers={pollAnswers} onVote={this.handleVote} customStyles={pollStyles} noStorage vote="React" />
+        <Poll question={pollQuestion} answers={pollAnswers} onVote={this.handleVote} customStyles={pollStyles} noStorage vote="" />
       </div>
     )
   }

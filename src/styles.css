@@ -55,11 +55,27 @@
 }
 
 .poll .answers .option:hover, .poll .answers .option:active {
-	background: #6d4b943b;
+	background: #6d4b943B;
 }
 
 .poll .answers .option.red:hover, .poll .answers .option.red:active {
-	background: #000000;
+	background: #FF28283B;
+}
+
+.poll .answers .option.blue:hover, .poll .answers .option.blue:active {
+	background: #283EFF3B;
+}
+
+.poll .answers .option.black:hover, .poll .answers .option.black:active {
+	background: #0000003B;
+}
+
+.poll .answers .option.white:hover, .poll .answers .option.white:active {
+	background: #ffffff3B;
+}
+
+.poll .answers .option.cyan:hover, .poll .answers .option.cyan:active {
+	background: #00BCDD3B;
 }
 
 .poll .answers .result {
