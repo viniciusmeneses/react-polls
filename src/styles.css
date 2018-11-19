@@ -68,6 +68,7 @@
 }
 
 .poll .answers .result .fill {
+  width: 0%;
   background-color: #6d4b943b;
   height: 100%;
   border-radius: 3px;
@@ -96,25 +97,14 @@
   white-space: nowrap;
 }
 
+.poll .answers .result .answer.vote::after {
+  content: ' \2713';
+}
+
 .poll .votes {
   margin-top: 5px;
   margin-bottom: 0;
   padding: 0;
   font-size: 13px;
   color: rgba(58, 58, 58, 0.514);
-}
-
-.fadeEnter {
-  opacity: 0.01;
-}
-.fadeEnterActive {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-.fadeExit {
-  opacity: 1;
-}
-.fadeExitActive {
-  opacity: 0.01;
-  transition: opacity 500ms ease-in;
 }

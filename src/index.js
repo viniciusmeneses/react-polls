@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import animate from 'animate.css'
 
 import styles from './styles.css'
 
@@ -20,6 +21,7 @@ export default class Poll extends Component {
   }
 
   componentDidMount() {
+    console.log(animate)
     this.checkVote()
     this.loadVotes()
   }
@@ -79,21 +81,21 @@ export default class Poll extends Component {
     const { poll, totalVotes } = this.state
 
     return (
-      <article className={styles.poll}>
+      <article className={`${animate.animated} ${animate.fadeIn} ${animate.faster} ${styles.poll}`}>
         <h3 className={styles.question}>{question}</h3>
         <ul className={styles.answers}>
           {answers.map(answer => (
             <li key={answer.option}>
               {!poll.voted ? (
-                <button className={styles.option} type='button' onClick={() => this.vote(answer.option)}>
+                <button className={`${animate.animated} ${animate.fadeIn} ${animate.faster} ${styles.option}`} type='button' onClick={() => this.vote(answer.option)}>
                   {answer.option}
                 </button>
               ) : (
-                <div className={styles.result}>
-                  <div className={styles.fill} style={{ width: this.calculatePercent(answer.votes, totalVotes) }} />
+                <div className={`${animate.animated} ${animate.fadeIn} ${animate.faster} ${styles.result}`}>
+                  <div className={styles.fill} style={{ width: this.calculatePercent(answer.votes, totalVotes) }} pose={totalVotes ? 'hidden' : 'visible'} i={1000} />
                   <div className={styles.labels}>
                     <span className={styles.percent}>{this.calculatePercent(answer.votes, totalVotes)}</span>
-                    <span className={styles.answer}>{answer.option}</span>
+                    <span className={`${styles.answer} ${answer.option === poll.option ? styles.vote : ''}`}>{answer.option}</span>
                   </div>
                 </div>
               )}

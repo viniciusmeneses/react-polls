@@ -69,5 +69,9 @@
     "react",
     "poll",
     "component"
-  ]
+  ],
+  "dependencies": {
+    "animate.css": "^3.7.0",
+    "react-pose": "^4.0.2"
+  }
 }
