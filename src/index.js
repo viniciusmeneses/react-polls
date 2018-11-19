@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import styles from './styles.css'
 
 export default class Poll extends Component {
+  // Answers prop format: [ { option: string, votes: number } ]
   static propTypes = {
     question: PropTypes.string,
     answers: PropTypes.array,
@@ -14,11 +15,13 @@ export default class Poll extends Component {
     poll: {
       voted: false,
       option: ''
-    }
+    },
+    totalVotes: 0
   }
 
   componentDidMount() {
     this.checkVote()
+    this.loadVotes()
   }
 
   checkVote = () => {
@@ -30,6 +33,13 @@ export default class Poll extends Component {
     }
   }
 
+  loadVotes = () => {
+    const totalVotes = this.props.answers.reduce((total, answer) => total + answer.votes, 0)
+    this.setState({
+      totalVotes
+    })
+  }
+
   setPollVote = (answer) => {
     const newPoll = { ...this.state.poll }
     newPoll.voted = true
@@ -39,7 +49,7 @@ export default class Poll extends Component {
     })
   }
 
-  // Storage format: [ { question: '...', option: '...' } ]
+  // Storage format: [ { question: string, option: string } ]
   getStoragePolls = () => JSON.parse(localStorage.getItem('react-polls')) || []
 
   vote = answer => {
@@ -54,26 +64,28 @@ export default class Poll extends Component {
     this.props.onVote(answer)
   }
 
+  calculatePercent = (votes, total) => `${parseInt((votes / total) * 100)}%`
+
   render() {
     const { question, answers } = this.props
-    const { poll } = this.state
+    const { poll, totalVotes } = this.state
 
     return (
       <article className={styles.poll}>
         <h3 className={styles.question}>{question}</h3>
         <ul className={styles.answers}>
           {answers.map(answer => (
-            <li key={answer}>
+            <li key={answer.option}>
               {!poll.voted ? (
-                <button className={styles.option} type='button' onClick={() => this.vote(answer)}>
-                  {answer}
+                <button className={styles.option} type='button' onClick={() => this.vote(answer.option)}>
+                  {answer.option}
                 </button>
               ) : (
                 <div className={styles.result}>
-                  <div className={styles.fill} />
+                  <div className={styles.fill} style={{ width: this.calculatePercent(answer.votes, totalVotes) }} />
                   <div className={styles.labels}>
-                    <span className={styles.percent}>10%</span>
-                    <span className={styles.answer}>{answer}</span>
+                    <span className={styles.percent}>{this.calculatePercent(answer.votes, totalVotes)}</span>
+                    <span className={styles.answer}>{answer.option}</span>
                   </div>
                 </div>
               )}

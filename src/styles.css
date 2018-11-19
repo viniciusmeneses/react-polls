@@ -71,10 +71,9 @@
 }
 
 .poll .answers .result .fill {
-  width: 20%;
   background-color: #6d4b943b;
   height: 100%;
-  border-radius: 2px;
+  border-radius: 3px;
   display: flex;
   align-items: center;
 }
@@ -82,11 +81,11 @@
 .poll .answers .result .labels {
   position: absolute;
   top: calc(19px - 9px);
+  margin: 0 10px;
+  font-size: 16px;
 }
 
 .poll .answers .result .percent {
-
-  margin-left: 5px;
   color: #6d4b94;
 }
 
@@ -97,5 +96,4 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  margin-right: 5px;
 }
