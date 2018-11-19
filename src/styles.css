@@ -1,5 +1,4 @@
 .poll {
-  /* border: 1px solid #7c47b9; */
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -13,12 +12,12 @@
 }
 
 .poll .question {
-  color: rgb(58, 58, 58);
-  text-align: center;
+  color: #3a3a3a;
+  text-align: inherit;
   font-weight: normal;
   margin: 0;
-  padding-bottom: 5px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.13);
+  padding-bottom: 2px;
+  border-bottom: 1px solid #6d4b943b;
 }
 
 .poll .answers {
@@ -30,7 +29,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 10px;
+  margin: 5px 0;
 }
 
 .poll .answers li {
@@ -57,7 +56,10 @@
 
 .poll .answers .option:hover, .poll .answers .option:active {
 	background: #6d4b943b;
-  /* color: #fff; */
+}
+
+.poll .answers .option.red:hover, .poll .answers .option.red:active {
+	background: #000000;
 }
 
 .poll .answers .result {
@@ -91,7 +93,6 @@
 .poll .answers .result .answer {
   margin-left: 15px;
   color: #6d4b94;
-  justify-self: flex-start;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -102,8 +103,8 @@
 }
 
 .poll .votes {
-  margin-top: 5px;
-  margin-bottom: 0;
+  text-align: inherit;
+  margin: 0;
   padding: 0;
   font-size: 13px;
   color: rgba(58, 58, 58, 0.514);

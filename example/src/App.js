@@ -10,6 +10,15 @@ const pollAnswers = [
   { option: 'Angular', votes: 15 },
 ];
 
+const pollStyles = {
+  questionSeparator: true,
+  questionSeparatorWidth: 'title',
+  questionBold: false,
+  questionColor: '#3a3a3a',
+  align: 'center',
+  theme: 'default'
+}
+
 export default class App extends Component {
   state = {
     pollAnswers
@@ -21,10 +30,10 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.teste()
+    this.autoAddVotes()
   }
 
-  teste = () => {
+  autoAddVotes = () => {
     setTimeout(() => {
       const { pollAnswers } = this.state
       const choseAnswer = parseInt(Math.random() * 3, 10)
@@ -32,8 +41,8 @@ export default class App extends Component {
       this.setState({
         pollAnswers
       })
-      this.teste()
-    }, 500)
+      this.autoAddVotes()
+    }, Math.random() * 5000)
   }
 
   render () {
@@ -41,7 +50,7 @@ export default class App extends Component {
 
     return (
       <div>
-        <Poll question={pollQuestion} answers={pollAnswers} onVote={this.handleVote} />
+        <Poll question={pollQuestion} answers={pollAnswers} onVote={this.handleVote} customStyles={pollStyles} />
       </div>
     )
   }
