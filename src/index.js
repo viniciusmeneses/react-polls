@@ -24,9 +24,14 @@ export default class Poll extends Component {
     this.loadVotes()
   }
 
+  componentWillReceiveProps() {
+    this.loadVotes()
+  }
+
   checkVote = () => {
+    const { question } = this.props
     const storage = this.getStoragePolls()
-    const answer = storage.filter(answer => answer.question === this.props.question)
+    const answer = storage.filter(answer => answer.question === question)
 
     if (answer.length) {
       this.setPollVote(answer[0].option)
@@ -34,14 +39,16 @@ export default class Poll extends Component {
   }
 
   loadVotes = () => {
-    const totalVotes = this.props.answers.reduce((total, answer) => total + answer.votes, 0)
+    const { answers } = this.props
+    const totalVotes = answers.reduce((total, answer) => total + answer.votes, 0)
     this.setState({
       totalVotes
     })
   }
 
   setPollVote = (answer) => {
-    const newPoll = { ...this.state.poll }
+    const { poll } = this.state
+    const newPoll = { ...poll }
     newPoll.voted = true
     newPoll.option = answer
     this.setState({
@@ -53,15 +60,16 @@ export default class Poll extends Component {
   getStoragePolls = () => JSON.parse(localStorage.getItem('react-polls')) || []
 
   vote = answer => {
+    const { question, onVote } = this.props
     const storage = this.getStoragePolls()
     storage.push({
-      question: this.props.question,
+      question: question,
       option: answer
     })
     localStorage.setItem('react-polls', JSON.stringify(storage))
 
     this.setPollVote(answer)
-    this.props.onVote(answer)
+    onVote(answer)
   }
 
   calculatePercent = (votes, total) => `${parseInt((votes / total) * 100)}%`
@@ -92,6 +100,7 @@ export default class Poll extends Component {
             </li>
           ))}
         </ul>
+        <p className={styles.votes}>{`${totalVotes} vote${totalVotes !== 1 ? 's' : ''}`}</p>
       </article>
     )
   }
