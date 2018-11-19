@@ -50,7 +50,7 @@ export default class App extends Component {
 
     return (
       <div>
-        <Poll question={pollQuestion} answers={pollAnswers} onVote={this.handleVote} customStyles={pollStyles} />
+        <Poll question={pollQuestion} answers={pollAnswers} onVote={this.handleVote} customStyles={pollStyles} noStorage vote="React" />
       </div>
     )
   }

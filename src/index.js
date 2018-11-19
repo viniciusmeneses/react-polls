@@ -14,7 +14,9 @@ export default class Poll extends Component {
     question: PropTypes.string,
     answers: PropTypes.array,
     onVote: PropTypes.func,
-    customStyles: PropTypes.object
+    customStyles: PropTypes.object,
+    noStorage: PropTypes.bool,
+    vote: PropTypes.string
   }
 
   state = {
@@ -26,7 +28,8 @@ export default class Poll extends Component {
   }
 
   componentDidMount() {
-    this.checkVote()
+    const { noStorage } = this.props
+    if (!noStorage) this.checkVote()
     this.loadVotes()
   }
 
@@ -45,35 +48,44 @@ export default class Poll extends Component {
   }
 
   loadVotes = () => {
-    const { answers } = this.props
+    const { answers, vote } = this.props
     const totalVotes = answers.reduce((total, answer) => total + answer.votes, 0)
     this.setState({
       totalVotes
     })
+    if (vote) this.setPollVote(vote)
   }
 
   setPollVote = (answer) => {
-    const { poll } = this.state
-    const newPoll = { ...poll }
-    newPoll.voted = true
-    newPoll.option = answer
-    this.setState({
-      poll: newPoll
-    })
+    const { answers } = this.props
+    const optionsOnly = answers.map(item => item.option)
+
+    if (optionsOnly.includes(answer)) {
+      const { poll } = this.state
+      const newPoll = { ...poll }
+      newPoll.voted = true
+      newPoll.option = answer
+
+      this.setState({
+        poll: newPoll
+      })
+    }
   }
 
   // Storage format: [ { url: string, question: string, option: string } ]
   getStoragePolls = () => JSON.parse(localStorage.getItem('react-polls')) || []
 
   vote = answer => {
-    const { question, onVote } = this.props
-    const storage = this.getStoragePolls()
-    storage.push({
-      url: location.href,
-      question: question,
-      option: answer
-    })
-    localStorage.setItem('react-polls', JSON.stringify(storage))
+    const { question, onVote, noStorage } = this.props
+    if (!noStorage) {
+      const storage = this.getStoragePolls()
+      storage.push({
+        url: location.href,
+        question: question,
+        option: answer
+      })
+      localStorage.setItem('react-polls', JSON.stringify(storage))
+    }
 
     this.setPollVote(answer)
     onVote(answer)
@@ -102,8 +114,6 @@ export default class Poll extends Component {
   render() {
     const { question, answers, customStyles } = this.props
     const { poll, totalVotes } = this.state
-
-    console.log(this.obtainColors(customStyles.theme))
     const colors = this.obtainColors(customStyles.theme)
 
     return (
