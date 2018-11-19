@@ -14,7 +14,7 @@ const pollStyles = {
   questionSeparator: true,
   questionSeparatorWidth: 'title',
   questionBold: false,
-  questionColor: '#3a3a3a',
+  questionColor: '#474747',
   align: 'center',
   theme: 'black'
 }

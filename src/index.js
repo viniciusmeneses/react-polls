@@ -66,13 +66,14 @@ export default class Poll extends Component {
     const optionsOnly = answers.map(item => item.option)
 
     if (optionsOnly.includes(answer)) {
-      const { poll } = this.state
+      const { poll, totalVotes } = this.state
       const newPoll = { ...poll }
       newPoll.voted = true
       newPoll.option = answer
 
       this.setState({
-        poll: newPoll
+        poll: newPoll,
+        totalVotes: totalVotes + 1
       })
     }
   }
