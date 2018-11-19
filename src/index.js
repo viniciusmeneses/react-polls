@@ -22,34 +22,41 @@ export default class Poll extends Component {
   }
 
   checkVote = () => {
-    // Storage format: [ { question: '...', option: '...' } ]
-    const storage = JSON.parse(localStorage.getItem('react-polls')) || []
-    console.log(storage)
+    const storage = this.getStoragePolls()
     const answer = storage.filter(answer => answer.question === this.props.question)
 
     if (answer.length) {
-      const newPoll = { ...this.state.poll }
-      newPoll.voted = true
-      newPoll.option = answer[0].option
-
-      this.setState({
-        poll: newPoll
-      })
+      this.setPollVote(answer[0].option)
     }
   }
 
+  setPollVote = (answer) => {
+    const newPoll = { ...this.state.poll }
+    newPoll.voted = true
+    newPoll.option = answer
+    this.setState({
+      poll: newPoll
+    })
+  }
+
+  // Storage format: [ { question: '...', option: '...' } ]
+  getStoragePolls = () => JSON.parse(localStorage.getItem('react-polls')) || []
+
   vote = answer => {
-    const storage = JSON.parse(localStorage.getItem('react-polls')) || []
+    const storage = this.getStoragePolls()
     storage.push({
       question: this.props.question,
       option: answer
     })
     localStorage.setItem('react-polls', JSON.stringify(storage))
-    this.props.onVote()
+
+    this.setPollVote(answer)
+    this.props.onVote(answer)
   }
 
   render() {
     const { question, answers } = this.props
+    const { poll } = this.state
 
     return (
       <article className={styles.poll}>
@@ -57,9 +64,19 @@ export default class Poll extends Component {
         <ul className={styles.answers}>
           {answers.map(answer => (
             <li key={answer}>
-              <button type='button' onClick={() => this.vote(answer)}>
-                {answer}
-              </button>
+              {!poll.voted ? (
+                <button className={styles.option} type='button' onClick={() => this.vote(answer)}>
+                  {answer}
+                </button>
+              ) : (
+                <div className={styles.result}>
+                  <div className={styles.fill} />
+                  <div className={styles.labels}>
+                    <span className={styles.percent}>10%</span>
+                    <span className={styles.answer}>{answer}</span>
+                  </div>
+                </div>
+              )}
             </li>
           ))}
         </ul>

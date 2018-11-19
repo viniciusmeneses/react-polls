@@ -6,7 +6,7 @@ export default class App extends Component {
   render () {
     return (
       <div>
-        <Poll question="What's your favourite JS framework?" answers={['React', 'Vue', 'Angular']} />
+        <Poll question="What's your favourite JS framework?" answers={['React', 'Vue', 'Angular']} onVote={() => {}} />
       </div>
     )
   }

@@ -41,12 +41,11 @@
   margin: 5px 0;
 }
 
-.poll .answers button {
-	background: #ffffff;
+.poll .answers .option, .poll .answers .result {
   color: #6d4b94;
   font-weight: bold;
   border: 2px solid #7c6497;
-  border-radius: 25px;
+  border-radius: 5px;
   cursor: pointer;
   width: 100%;
   font-size: 100%;
@@ -56,9 +55,47 @@
   transition: all 0.3s ease;
   outline: 0;
   font-family: inherit;
+  background-color: inherit;
 }
 
-.poll .answers button:hover {
-	background: #6d4b94;
-  color: #fff;
+.poll .answers .option:hover, .poll .answers .option:active {
+	background: #6d4b943b;
+  /* color: #fff; */
+}
+
+.poll .answers .result {
+  height: 42px;
+  padding: 0;
+  cursor: default;
+  position: relative;
+}
+
+.poll .answers .result .fill {
+  width: 20%;
+  background-color: #6d4b943b;
+  height: 100%;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.poll .answers .result .labels {
+  position: absolute;
+  top: calc(19px - 9px);
+}
+
+.poll .answers .result .percent {
+
+  margin-left: 5px;
+  color: #6d4b94;
+}
+
+.poll .answers .result .answer {
+  margin-left: 15px;
+  color: #6d4b94;
+  justify-self: flex-start;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-right: 5px;
 }
