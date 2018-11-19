@@ -121,7 +121,6 @@ export default class Poll extends Component {
     const { question, answers, customStyles } = this.props
     const { poll, totalVotes } = this.state
     const colors = this.obtainColors(customStyles.theme)
-    console.log(colors)
 
     return (
       <article className={`${animate.animated} ${animate.fadeIn} ${animate.faster} ${styles.poll}`} style={{ textAlign: customStyles.align, alignItems: this.alignPoll(customStyles.align) }}>
