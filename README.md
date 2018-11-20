@@ -63,6 +63,19 @@ class App extends Component {
 
 *This is a basic example, for complex usage, see the **Demo** and **User Guide** sections.*
 
+## Customize
+
+Poll component is able to customizable through `customStyles` prop, the prop receives a object with the following keys and values:
+
+|Key|Value|Description|
+|---|---|---|
+|*questionSeparator*|Boolean|Enables or disables the separator between question and answers.
+|*questionSeparatorWidth*|`'question'` or `'poll'`|Defines the width of separator based on the question or the poll.
+|*questionBold*|Boolean|Adds bold to the question font.
+|*questionColor*|Hex Color|Sets the color of question font. Must be in hex format `#000000`.
+|*align*|`'left'`, `'center'` or `'right'`|Sets the align of question and total votes.
+|*theme*|`'purple'`, `'red'`, `'blue'`, `'black'`, `'white'` or `'cyan'`|Sets the poll theme.
+
 ## Demo
 
 If you want to test and view react-polls, go to the online demo by clicking [here](). The demo source code is available within the example directory.
