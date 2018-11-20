@@ -10,7 +10,9 @@
 
 **react-polls** is a poll component for React which can be *easily used and customizable* adding your question and possible answers. It uses browser **Local Storage** to save the user vote and block multiples votes.
 
-[![Preview](./preview.png)](http://react-polls.surge.sh/)
+<p align="center">
+  <a href="http://react-polls.surge.sh/"><img src="./preview.png" /></a>
+</p>
 
 ## Demo
 
