@@ -18,9 +18,7 @@ yarn add react-polls
 
 ## Usage
 
-After installation, import the **Poll** component from **react-polls** dependecy and start using.
-
-*This is a basic example, for complex usage, see the **User Guide** and **Demo** sections.*
+After installation, import the **Poll** component from **react-polls** dependency and start using it by passing the required props: `question`, `answer` and `onVote`. See **User Guide** section for more information about props.
 
 ```jsx
 import React, { Component } from 'react';
@@ -34,8 +32,9 @@ const pollAnswers = [
 ]
 
 class App extends Component {
+  // Setting answers to state to reload the component with each vote
   state = {
-    pollAnswers
+    pollAnswers: [...pollAnswers]
   }
 
   // Handling user vote
@@ -46,7 +45,6 @@ class App extends Component {
       if (answer.option === voteAnswer) answer.votes++
       return answer
     })
-
     this.setState({
       pollAnswers: newPollAnswers
     })
@@ -54,7 +52,6 @@ class App extends Component {
 
   render () {
     const { pollAnswers } = this.state
-
     return (
       <div>
         <Poll question={pollQuestion} answers={pollAnswers} onVote={this.handleVote} />
@@ -63,6 +60,12 @@ class App extends Component {
   }
 };
 ```
+
+*This is a basic example, for complex usage, see the **Demo** and **User Guide** sections.*
+
+## Demo
+
+If you want to test and view react-polls, go to the online demo by clicking [here](). The demo source code is available within the example directory.
 
 ## User guide
 
