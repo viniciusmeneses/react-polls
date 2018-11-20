@@ -10,6 +10,12 @@
 
 **react-polls** is a poll component for React which can be *easily used and customizable* adding your question and possible answers. It uses browser **Local Storage** to save the user vote and block multiples votes.
 
+[![Preview](./preview.png)](http://react-polls.surge.sh/)
+
+## Demo
+
+If you want to test and view react-polls, go to the online demo by clicking [here](http://react-polls.surge.sh/). The demo source code is available within the example directory.
+
 ## Install
 
 Use the package manager to install **react-polls** dependency to your project.
@@ -83,10 +89,6 @@ Poll component is able to customizable through `customStyles` prop, the prop rec
 |*align*|`'left'`, `'center'` or `'right'`|Sets the align of question and total votes.
 |*theme*|`'purple'`, `'red'`, `'blue'`, `'black'`, `'white'` or `'cyan'`|Sets the poll theme.
 
-## Demo
-
-If you want to test and view react-polls, go to the online demo by clicking [here](). The demo source code is available within the example directory.
-
 ## User guide
 
 Below is listed all the props that can be passed to the **Poll** component:
@@ -99,6 +101,16 @@ Below is listed all the props that can be passed to the **Poll** component:
 |customStyles *(optional)*|Sets custom styles for the **Poll** component. It receives a object with the following optional properties: <ul><li>`questionSeparator`</li> <li>`questionSeparatorWidth`</li> <li>`questionBold`</li> <li>`questionColor`</li> <li>`align`</li> <li>`theme`</li></ul>|Type: `object`<br/>Example: See at ```examples/src/App.js```|
 |noStorage *(optional)*|Disables the use of **LocalStorage** to save the user's vote.|Type: `boolean`<br/>Example: ```false```|
 |vote *(optional)*|Receives the text answer and sets the user vote. If set, it will show the poll result. I'd recommend using this prop with **noStorage** prop.|Type: `string`<br/>Example: ```React```|
+
+## Contribute
+
+If you want to contribute in **react-polls**, follow these steps:
+
+- Make a fork of this repository and clone it `git clone fork_url`
+- Run ```npm install``` and ```npm start``` to install the dependencies and start the component
+- Open a new terminal tab and go to example folder and run `npm start`
+- Do the changes and make a [Pull Request](https://github.com/viniciusmeneses/react-polls/pulls)
+
 
 ## License
 
