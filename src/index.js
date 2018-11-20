@@ -8,7 +8,7 @@ const themes = {
   purple: ['#6D4B94', '#7C6497', '#6D4B943B'],
   red: ['#E23D3D', '#EF4545', '#FF28283B'],
   blue: ['#5674E0', '#5674E0', '#5674E03B'],
-  black: ['#474747', '#474747', '#4747473B'],
+  black: ['#303030', '#303030', '#3030303B'],
   white: ['#ffffff', '#ffffff', '#ffffff3B'],
   cyan: ['#00BCDD', '#00BCDD', '#00BCDD3B']
 }
@@ -112,7 +112,7 @@ export default class Poll extends Component {
   obtainColors = customTheme => {
     const colors = themes[customTheme]
     if (!colors) {
-      return themes['purple']
+      return themes['black']
     }
     return colors
   }
