@@ -1,7 +1,7 @@
 {
   "name": "react-polls",
   "version": "1.0.0",
-  "description": "Poll component for react.",
+  "description": "Customizable poll component for React",
   "author": "viniciusmeneses",
   "license": "MIT",
   "repository": {
@@ -68,10 +68,13 @@
   "keywords": [
     "react",
     "poll",
-    "component"
+    "component",
+    "vote",
+    "react-component",
+    "polls",
+    "votes"
   ],
   "dependencies": {
-    "animate.css": "^3.7.0",
-    "react-pose": "^4.0.2"
+    "animate.css": "^3.7.0"
   }
 }
