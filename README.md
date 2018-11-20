@@ -3,6 +3,8 @@
 
 > Customizable poll component for React
 
+**react-polls** is a poll component for React which can be *easily used and customizable* adding your question and possible answers. It uses browser **Local Storage** to save the user vote and block multiples votes.
+
 ## Install
 
 Use the package manager to install **react-polls** dependency to your project.
