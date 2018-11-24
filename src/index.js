@@ -16,12 +16,24 @@ const themes = {
 export default class Poll extends Component {
   // Answers prop format: [ { option: string, votes: number } ]
   static propTypes = {
-    question: PropTypes.string,
-    answers: PropTypes.array,
-    onVote: PropTypes.func,
+    question: PropTypes.string.isRequired,
+    answers: PropTypes.array.isRequired,
+    onVote: PropTypes.func.isRequired,
     customStyles: PropTypes.object,
     noStorage: PropTypes.bool,
     vote: PropTypes.string
+  }
+
+  static defaultProps = {
+    customStyles: {
+      questionSeparator: true,
+      questionSeparatorWidth: 'question',
+      questionBold: true,
+      questionColor: '#303030',
+      align: 'center',
+      theme: 'black'
+    },
+    noStorage: false
   }
 
   state = {
@@ -56,13 +68,13 @@ export default class Poll extends Component {
     const { answers, vote } = this.props
     const totalVotes = answers.reduce((total, answer) => total + answer.votes, 0)
     this.setState({
-      totalVotes
+      totalVotes: answers.reduce((total, answer) => total + answer.votes, 0)
     })
     if (vote) this.setPollVote(vote)
   }
 
   setPollVote = (answer) => {
-    const { answers } = this.props
+    const { answers, vote } = this.props
     const optionsOnly = answers.map(item => item.option)
 
     if (optionsOnly.includes(answer)) {
@@ -71,10 +83,16 @@ export default class Poll extends Component {
       newPoll.voted = true
       newPoll.option = answer
 
-      this.setState({
-        poll: newPoll,
-        totalVotes: totalVotes + 1
-      })
+      if (!vote) {
+        this.setState({
+          poll: newPoll,
+          totalVotes: totalVotes + 1
+        })
+      } else {
+        this.setState({
+          poll: newPoll
+        })
+      }
     }
   }
 
@@ -97,7 +115,12 @@ export default class Poll extends Component {
     onVote(answer)
   }
 
-  calculatePercent = (votes, total) => `${parseInt((votes / total) * 100)}%`
+  calculatePercent = (votes, total) => {
+    if (votes === 0 && total === 0) {
+      return '0%'
+    }
+    return `${parseInt((votes / total) * 100)}%`
+  }
 
   alignPoll = (customAlign) => {
     if (customAlign === 'left') {
