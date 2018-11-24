@@ -1,10 +1,10 @@
 # react-polls
 [![NPM](https://img.shields.io/npm/v/react-polls.svg)](https://www.npmjs.com/package/react-polls)
+[![npm](https://img.shields.io/npm/dw/react-polls.svg)](https://www.npmjs.com/package/react-polls)
 [![Build Status](https://travis-ci.com/viniciusmeneses/react-polls.svg?branch=master)](https://travis-ci.com/viniciusmeneses/react-polls)
 [![dependencies Status](https://david-dm.org/viniciusmeneses/react-polls/status.svg)](https://github.com/viniciusmeneses/react-polls/)
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com)
 [![GitHub license](https://img.shields.io/github/license/viniciusmeneses/react-polls.svg)](https://github.com/viniciusmeneses/react-polls/blob/master/LICENSE)
-<!-- [![npm](https://img.shields.io/npm/dw/react-polls.svg)](https://www.npmjs.com/package/react-polls) -->
 
 > Customizable poll component for React
 
