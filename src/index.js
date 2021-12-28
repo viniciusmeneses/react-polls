@@ -10,7 +10,8 @@ const themes = {
   blue: ['#5674E0', '#5674E0', '#5674E03B'],
   black: ['#303030', '#303030', '#3030303B'],
   white: ['#ffffff', '#ffffff', '#ffffff3B'],
-  cyan: ['#00BCDD', '#00BCDD', '#00BCDD3B']
+  cyan: ['#00BCDD', '#00BCDD', '#00BCDD3B'],
+  green: ['#218400', '#218400', '#B6FF9E']
 }
 
 export default class Poll extends Component {
@@ -21,6 +22,7 @@ export default class Poll extends Component {
     onVote: PropTypes.func.isRequired,
     customStyles: PropTypes.object,
     noStorage: PropTypes.bool,
+    disableInputs: PropTypes.bool,
     vote: PropTypes.string
   }
 
@@ -141,7 +143,7 @@ export default class Poll extends Component {
   }
 
   render() {
-    const { question, answers, customStyles } = this.props
+    const { question, answers, customStyles, disableInputs } = this.props
     const { poll, totalVotes } = this.state
     const colors = this.obtainColors(customStyles.theme)
 
@@ -151,11 +153,7 @@ export default class Poll extends Component {
         <ul className={styles.answers}>
           {answers.map(answer => (
             <li key={answer.option}>
-              {!poll.voted ? (
-                <button className={`${animate.animated} ${animate.fadeIn} ${animate.faster} ${styles.option} ${styles[customStyles.theme]}`} style={{ color: colors[0], borderColor: colors[1] }} type='button' onClick={() => this.vote(answer.option)}>
-                  {answer.option}
-                </button>
-              ) : (
+              {poll.voted || disableInputs ? (
                 <div className={`${animate.animated} ${animate.fadeIn} ${animate.faster} ${styles.result}`} style={{ color: colors[0], borderColor: colors[1] }}>
                   <div className={styles.fill} style={{ width: this.calculatePercent(answer.votes, totalVotes), backgroundColor: colors[2] }} />
                   <div className={styles.labels}>
@@ -163,6 +161,10 @@ export default class Poll extends Component {
                     <span className={`${styles.answer} ${answer.option === poll.option ? styles.vote : ''}`} style={{ color: colors[0] }}>{answer.option}</span>
                   </div>
                 </div>
+              ) : (
+                <button className={`${animate.animated} ${animate.fadeIn} ${animate.faster} ${styles.option} ${styles[customStyles.theme]}`} style={{ color: colors[0], borderColor: colors[1] }} type='button' onClick={() => this.vote(answer.option)}>
+                  {answer.option}
+                </button>
               )}
             </li>
           ))}

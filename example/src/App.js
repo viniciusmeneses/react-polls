@@ -15,7 +15,7 @@ const pollAnswers1 = [
 const pollStyles1 = {
   questionSeparator: true,
   questionSeparatorWidth: 'question',
-  questionBold: true ,
+  questionBold: true,
   questionColor: '#303030',
   align: 'center',
   theme: 'purple'
@@ -31,7 +31,7 @@ const pollAnswers2 = [
 const pollStyles2 = {
   questionSeparator: false,
   questionSeparatorWidth: 'question',
-  questionBold: false ,
+  questionBold: false,
   questionColor: '#4F70D6',
   align: 'center',
   theme: 'blue'
@@ -75,7 +75,7 @@ export default class App extends Component {
     }, Math.random() * 5000)
   }
 
-  render () {
+  render() {
     const { pollAnswers1, pollAnswers2 } = this.state
 
     return (
@@ -89,7 +89,7 @@ export default class App extends Component {
             <Poll question={pollQuestion1} answers={pollAnswers1} onVote={voteAnswer => this.handleVote(voteAnswer, pollAnswers1, 1)} customStyles={pollStyles1} noStorage />
           </div>
           <div>
-            <Poll question={pollQuestion2} answers={pollAnswers2} onVote={voteAnswer => this.handleVote(voteAnswer, pollAnswers2, 2)} customStyles={pollStyles2} noStorage />
+            <Poll question={pollQuestion2} answers={pollAnswers2} onVote={voteAnswer => this.handleVote(voteAnswer, pollAnswers2, 2)} customStyles={pollStyles2} noStorage disableInputs />
           </div>
         </main>
 
