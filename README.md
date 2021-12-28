@@ -89,7 +89,7 @@ Poll component is able to customizable through `customStyles` prop, the prop rec
 |*questionBold*|Boolean|Adds bold to the question font.
 |*questionColor*|Hex Color|Sets the color of question font. Must be in hex format `#000000`.
 |*align*|`'left'`, `'center'` or `'right'`|Sets the align of question and total votes.
-|*theme*|`'purple'`, `'red'`, `'blue'`, `'black'`, `'white'` or `'cyan'`|Sets the poll theme.
+|*theme*|`'purple'`, `'red'`, `'blue'`, `'black'`, `'green'`, `'white'` or `'cyan'`|Sets the poll theme.
 
 ## User guide
 
@@ -103,6 +103,7 @@ Below is listed all the props that can be passed to the **Poll** component:
 |customStyles *(optional)*|Sets custom styles for the **Poll** component. It receives a object with the following optional properties: <ul><li>`questionSeparator`</li> <li>`questionSeparatorWidth`</li> <li>`questionBold`</li> <li>`questionColor`</li> <li>`align`</li> <li>`theme`</li></ul>|Type: `object`<br/>Example: See at ```examples/src/App.js```|
 |noStorage *(optional)*|Disables the use of **LocalStorage** to save the user's vote.|Type: `boolean`<br/>Example: ```false```|
 |vote *(optional)*|Receives the text answer and sets the user vote. If set, it will show the poll result. I'd recommend using this prop with **noStorage** prop.|Type: `string`<br/>Example: ```React```|
+|disableInputs *(optional)*|Disables the user input and displays the results by default.|Type: `boolean`<br/>Example: ```false```|
 
 ## Contribute
 
